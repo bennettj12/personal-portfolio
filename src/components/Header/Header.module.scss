@@ -1,0 +1,40 @@
+.nav {
+    
+    & > a {
+        position: relative;
+        text-decoration-line: none;  
+        font-size: 2em;
+        font-weight: 600;
+        margin-right: 0.5em;
+        color: $ink;
+
+        transition: all 0.3s ease-out;
+
+        &:hover {
+            color: $accent1;
+
+            &::after {
+                width: 100%;
+                background: $accent1;
+            }
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: $ink;
+            transition: all 0.3s ease;
+        }
+    }
+
+}
+a.active {
+    color: $accent1;
+}
