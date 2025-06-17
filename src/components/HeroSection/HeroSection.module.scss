@@ -1,0 +1,43 @@
+.aboutMe {
+    
+    display: flex;
+    min-height: 400px;
+}
+
+.infoSection{
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    min-height: inherit;
+    text-align: left;
+    justify-content: center;
+    & > h1 {
+        margin: 0;
+    }
+    & > p {
+        margin-left: 1em;
+    }
+    & > hr {
+        width: 100%;
+        border: 2px solid $ink;
+    }
+    & button {
+        font: inherit;
+        font-size: larger;
+        background: transparent;
+        border: 2px solid $ink;
+        color: $ink;
+        
+        margin-left: 1em;
+        padding: 0.5em 1em;
+        align-self: baseline;
+
+        &:hover {
+            border: 2px solid $accent1;
+            color: $accent1;
+        }
+    }
+}
+.portraitSection{
+    width: 35%;
+}

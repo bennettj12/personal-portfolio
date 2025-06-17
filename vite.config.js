@@ -11,7 +11,8 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@styles': path.resolve(__dirname, './src/assets/styles')
+      '@styles': path.resolve(__dirname, './src/assets/styles'),
+      '@': path.resolve(__dirname, './src/')
     }
   },
   css: {
@@ -25,7 +26,7 @@ export default defineConfig({
     },
     modules: {
       localsConvention: 'camelCase',
-      generateScopedName: '[name]__[local]___[hash:base64:5]'
+      generateScopedName: '[local]_[hash:base64:5]'
     }
   },
   

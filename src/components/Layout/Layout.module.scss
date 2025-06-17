@@ -1,4 +1,8 @@
 .appContainer {
-    background-color: $paper;
-    margin: 0;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 20px;
+    margin: 0 auto;
 }
