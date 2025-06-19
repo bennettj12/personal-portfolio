@@ -7,7 +7,7 @@
 .infoSection{
     display: flex;
     flex-direction: column;
-    width: 65%;
+    width: 60%;
     min-height: inherit;
     text-align: left;
     justify-content: center;
@@ -26,11 +26,15 @@
         font-size: larger;
         background: transparent;
         border: 2px solid $ink;
+        border-radius: 6px;
         color: $ink;
         
         margin-left: 1em;
         padding: 0.5em 1em;
         align-self: baseline;
+
+        // filter: url(#pencilTexture);
+        // TODO: create button component which applies the pencil filter to the border only, but not the text within.
 
         &:hover {
             border: 2px solid $accent1;
@@ -39,5 +43,5 @@
     }
 }
 .portraitSection{
-    width: 35%;
+    width: 40%;
 }

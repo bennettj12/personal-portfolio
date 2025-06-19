@@ -1,7 +1,16 @@
-$paper: #FAF8F5;
-$ink: #312720;
-$accent1: #DFAD7C;
-$accent2: #8CBAA2;
-$highlight: #EBD6D6;
+:root {
+    --paper: #FAF8F5;
+    --ink: #312720;
+    --accent1: #DFAD7C;
+    --accent2: #8CBAA2;
+    --highlight: #EBD6D6; 
+}
+
+
+$paper: var(--paper);
+$ink: var(--ink);
+$accent1: var(--accent1);
+$accent2: var(--accent2);
+$highlight: var(--highlight);
 
 $texture: url('@/assets/images/papertexture.png');

@@ -1,10 +1,11 @@
 #root {
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
   display: flex;
   justify-content: center;
 }
 :root, body, html {
+
   width: 100%;
   margin: 0;
   padding: 0;
@@ -15,6 +16,7 @@
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;  
+  
   
   line-height: 1.5;
 
@@ -28,7 +30,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+::selection {
+  background: $highlight;
+}
 
 h1 {
   font-size: 3.2em;

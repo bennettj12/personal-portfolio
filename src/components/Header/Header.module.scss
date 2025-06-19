@@ -1,5 +1,5 @@
 .header {
-    border-bottom: 1px solid $ink;
+    
 }
 .nav {
     display: flex;
@@ -35,6 +35,7 @@
             height: 2px;
             background: $ink;
             transition: all 0.3s ease;
+            filter: url(#pencilTexture);
         }
     }
 

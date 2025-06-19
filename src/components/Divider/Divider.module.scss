@@ -1,0 +1,28 @@
+.divider {
+    width: 100%;
+    margin: 0;
+    margin-top: -0.5rem;
+    padding: 0 0rem;
+
+    & svg {
+        overflow: visible;
+        & path {
+            stroke: var(--stroke-color);
+            stroke-width: var(--stroke-width);
+            stroke-linecap: round;
+            fill: none;
+
+            stroke-dasharray: var(--path-length);
+            stroke-dashoffset: var(--path-length);
+            animation: drawPath 1s forwards;
+            animation-delay: var(--delay);
+            animation-timing-function: cubic-bezier(0.6, 0.05, 0.3, 0.9);
+        }
+    }
+    
+}
+@keyframes drawPath {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

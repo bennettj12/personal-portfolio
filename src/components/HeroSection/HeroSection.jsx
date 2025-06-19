@@ -1,3 +1,4 @@
+import Divider from '../Divider/divider.jsx';
 import styles from './HeroSection.module.scss'
 
 export default function HeroSecton() {
@@ -6,7 +7,7 @@ export default function HeroSecton() {
             <section className={styles.infoSection}>
                 <h1>Hi! I'm Bennett</h1>
                 <p>Some information about me goes here</p>
-                <hr/>
+                <Divider delay={0.5}/>
                 <button>See my projects</button>
             </section>
             <figure className={styles.portraitSection}>
