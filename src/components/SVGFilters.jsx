@@ -22,14 +22,7 @@ export default function SVGFilters() {
                         in="SourceGraphic" 
                         scale="0.1"
                     />
-                </filter>
-                 <filter id="inkBleed">
-                    <feGaussianBlur stdDeviation="0.5" />
-                    <feComposite operator="over" in="SourceGraphic" />
-                </filter> 
-                <clipPath id="erase-wipe">
-                    <rect width="100%" height="100%" />
-                </clipPath>           
+                </filter>      
             </defs>
 
         </svg>

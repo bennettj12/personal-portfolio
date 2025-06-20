@@ -44,9 +44,10 @@ export default function Layout() {
                     </motion.main>
                 </AnimatePresence>
 
-                <Footer />
+                
 
             </div>
+            <Footer />
         </AnimationContext.Provider>
     );
 }
