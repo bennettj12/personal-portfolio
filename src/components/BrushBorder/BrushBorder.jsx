@@ -1,13 +1,15 @@
 import { useEffect, useRef, useCallback } from 'react';
 import styles from './BrushBorder.module.scss'
 /**
- * Component draws a border section using some slight randomness and sin function
- * Having implemented this feature, I can't help but imagine that just using a repeating background
- * texture would have been simpler and easier (and might even look better). 
- * This way is pretty cool though since it's dynamically generated.
+ * Footer border component based on stacked sin waves.
+ * I made it animated by phase-shifting the sin waves in opposite directions which gives a 
+ * pretty organic-looking effect.
+ *
  * @param {string} color
  * @returns 
  */
+let sinPhase = 0;
+
 export default function BrushBorder({
     color = "var('--ink')"
 }) {
@@ -22,6 +24,8 @@ export default function BrushBorder({
 
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
+
+        const v = 2; // random variance
 
         canvas.width = parentWidth;
         canvas.height = height;
@@ -38,11 +42,11 @@ export default function BrushBorder({
 
         ctx.beginPath();
         ctx.moveTo(0, height)
-        for (let i = 0; i <= parentWidth; i += 4) {
+        for (let i = 0; i <= parentWidth; i += 6) {
             const noise = (
-                Math.sin(i * (0.01)) * 7 + // Base wave
-                (Math.random() * 5 - 2.5) +  // Randomness
-                (Math.sin(i * 0.02) * 4)  // Secondary wave
+                (Math.sin(i * (0.01)-(sinPhase/5)) * 8)- 4 + // Base wave
+                (Math.random() * v - (v/2)) +  // Randomness
+                (Math.sin(i * 0.02 + (sinPhase/10)) * 4) + 2  // Secondary wave
             );
             const y = Math.min(
                 height * 0.4 + noise, 
@@ -51,8 +55,8 @@ export default function BrushBorder({
             ctx.lineTo(i, y);
         }
 
-
-        ctx.lineTo(parentWidth, height);
+        // lineTo outside of page to ensure no awkward edge
+        ctx.lineTo(parentWidth + 100, height);
         ctx.lineTo(0, height);
         ctx.closePath();
 
@@ -60,33 +64,26 @@ export default function BrushBorder({
         ctx.fill();       
     }, [color])
 
-
     useEffect(() => {
+        // Draw initial border
         drawBorder();
+        // animated wavelike border
+        const interval = setInterval(() => {
+            drawBorder();
+            sinPhase++;
+        }, 150)
 
-        let animationFrame = requestAnimationFrame(drawBorder);
-
-        const handleResize = () => {
-            cancelAnimationFrame(animationFrame);
-            animationFrame = requestAnimationFrame(drawBorder);
-        }
-
+        //resize handling
+        const handleResize = () => drawBorder();
         window.addEventListener('resize', handleResize);
 
-        // cleanup
-        return () => {
+        const cleanup = () => {
+            clearInterval(interval);
             window.removeEventListener('resize', handleResize);
-            cancelAnimationFrame(animationFrame);
-            if(canvasRef.current) {
-                canvasRef.current.getContext('2d').clearRect(
-                    0,0,
-                    canvasRef.current.width,
-                    canvasRef.current.height
-                );
-            }
         }
-        
-    }, [drawBorder])
+
+        return cleanup;
+    }, [drawBorder]);
 
     return (
         <div ref={containerRef} className={styles.brushBorder}>

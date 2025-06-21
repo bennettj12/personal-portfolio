@@ -40,7 +40,7 @@ const AnimatedButton = forwardRef(({children, ...props}, ref) => {
             path += `L${x},${y}`;
         }
         // bottom left -> top right
-        for(let i = segments; i >= 2; i--) {
+        for(let i = segments; i >= 3; i--) {
             const y = ((height/segments) * i) - 5;
             const x = Math.random() * v;
             path += `L${x},${y}`
