@@ -13,35 +13,16 @@
     justify-content: center;
     & > h1 {
         margin: 0;
+        margin-bottom: .25em;
     }
     & > p {
         margin-left: 1em;
-    }
-    & > hr {
-        width: 100%;
-        border: 2px solid $ink;
-    }
-    & button {
-        font: inherit;
-        font-size: larger;
-        background: transparent;
-        border: 2px solid $ink;
-        border-radius: 6px;
-        color: $ink;
-        
-        margin-left: 1em;
-        padding: 0.5em 1em;
-        align-self: baseline;
-
-        // filter: url(#pencilTexture);
-        // TODO: create button component which applies the pencil filter to the border only, but not the text within.
-
-        &:hover {
-            border: 2px solid $accent1;
-            color: $accent1;
-        }
+        margin-top: 0.5em;
+        font-size: 1.5rem;
     }
 }
 .portraitSection{
     width: 40%;
+    min-height: inherit;
+    background: $highlight;
 }

@@ -1,6 +1,13 @@
 import { useEffect, useRef, useCallback } from 'react';
 import styles from './BrushBorder.module.scss'
-
+/**
+ * Component draws a border section using some slight randomness and sin function
+ * Having implemented this feature, I can't help but imagine that just using a repeating background
+ * texture would have been simpler and easier (and might even look better). 
+ * This way is pretty cool though since it's dynamically generated.
+ * @param {string} color
+ * @returns 
+ */
 export default function BrushBorder({
     color = "var('--ink')"
 }) {
