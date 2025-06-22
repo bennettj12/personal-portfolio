@@ -8,7 +8,7 @@ const info = {
     aboutSnippet: `
         I enjoy building tools and projects that bridge code and creativity.
     `,
-    ctaButton: "Check out my work!"
+    ctaButton: "See my projects!"
 }
 
 export default function HeroSection() {

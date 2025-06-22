@@ -9,9 +9,10 @@
     color: $ink;
     align-self: baseline;
     border: transparent;
-    transition: color 0.2s ease;
+    transition: color 0.2s;
     &:hover {
         color: $accent1;
+        transform: scale(1.025);
         cursor: pointer;
     }
     width: 100%;
@@ -24,6 +25,7 @@
     overflow: visible;
     &:hover .borderPath {
         stroke: $accent1;
+        stroke-dasharray: 10 10;
     }
 }
 .border {
@@ -35,6 +37,7 @@
     height: 100%;
     pointer-events: none;
     z-index: 3;
+    transition: all .2s ease;
 }
 
 .borderPath {
