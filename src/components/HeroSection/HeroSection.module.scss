@@ -1,7 +1,7 @@
 .aboutMe {
-    
     display: flex;
     min-height: 400px;
+    margin-top: 2rem;
 }
 .name{
     color: $accent1;
@@ -27,4 +27,5 @@
     width: 40%;
     min-height: inherit;
     background: $highlight;
+    margin: 0;
 }

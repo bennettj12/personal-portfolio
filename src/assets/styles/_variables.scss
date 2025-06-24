@@ -55,7 +55,7 @@ $active-theme: map-get($themes, $key: $ts);
 
 
 $paper: map-get(map-get($themes, $ts), "paper");
-$ink: map-get(map-get($themes, $ts), $key: "ink");
+$ink: map-get(map-get($themes, $ts), "ink");
 $accent1: map-get(map-get($themes, $ts), "accent1");
 $accent2: map-get(map-get($themes, $ts), "accent2");
 $highlight: map-get(map-get($themes, $ts), "highlight");

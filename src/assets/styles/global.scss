@@ -23,17 +23,15 @@
   color-scheme: dark light;
   color: $ink;
 
-  background: linear-gradient(
-    to bottom,
-    rgba($paper, 0.8) 0%,
-    rgba(darken($paper, 8%), 100%)
-  ),
-  $texture;
+  background:
+    linear-gradient(
+      to bottom,
+      $paper 0%,
+      darken($paper, 8%) 100%
+    ),
+    $texture; 
   background-blend-mode: soft-light;
   background-attachment: fixed;
-
-  //background-color: $paper;
-  //background-image: $texture;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

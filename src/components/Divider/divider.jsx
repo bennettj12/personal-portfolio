@@ -8,14 +8,15 @@ export default function Divider({
     thickness = 1.5,
     amplitude = 7,
     reverse = false,
-    delay = 0
+    delay = 0,
+    animate = true
 }) {
 
     const pathRef = useRef(null);
     const [pathLength, setPathLength] = useState(0);
 
     useEffect(() => {
-        if(pathRef.current) {
+        if(pathRef.current && animate) {
             const length = pathRef.current.getTotalLength();
             setPathLength(length);
         }
