@@ -1,29 +1,63 @@
-
-/*
-    Original Color Scheme:
-    --paper: #FAF8F5;
-    --ink: #312720;
-    --accent1: #DFAD7C;
-    --accent2: #8CBAA2;
-    --highlight: #EBD6D6; 
-
-*/
+$themes: (
+    "base": (
+        "paper": #FAF8F5,
+        "ink": #312020,
+        "accent1": #df6a6a,
+        "accent2": #7ecdc6,
+        "highlight": #EBD6D6,
+    ),
+    "ocean": (
+        "paper": #F8FBFF,
+        "ink": #0A1A2F,
+        "accent1": #4D8BFF,
+        "accent2": #7ecdc6,
+        "highlight": #D6E9FF,
+    ),
+    "sunset": (
+        "paper": #faf6f5,         
+        "ink": #161525,           
+        "accent1": #6E56CF,       
+        "accent2": #FF7D8A,       
+        "highlight": #FFE5E8,     
+    ),
+    "sketchbook": (
+        "paper": #FFF8F0,         
+        "ink": #1E1B32,           
+        "accent1": #4A6FA5,       
+        "accent2": #D46C6C,       
+        "highlight": #F0E6DD,     
+    ),
+    "inkwash": (
+        "paper": #FDF5E8,         
+        "ink": #222036,           
+        "accent1": #8C7AA8,       
+        "accent2": #C99D8B,       
+        "highlight": #F3E9E0,     
+    ),
+    "charcoal": (
+        "paper": #f8e9e5,         
+        "ink": #181926,           
+        "accent1": #6B7F99,       
+        "accent2": #ba877a,       
+        "highlight": #edddd3,     
+    )
+);
+// selected theme
+$ts: "charcoal";
+$active-theme: map-get($themes, $key: $ts);
 
 :root {
-    --paper: #FAF8F5;
-    --ink: #312020;
-    --accent1: #df6a6a;
-    --accent2: #8cbab6;
-    --highlight: #EBD6D6; 
-
+    @each $name, $value in $active-theme {
+        --#{$name}: #{$value};   
+    }
     --footer-height: 200px;
 }
 
 
-$paper: var(--paper);
-$ink: var(--ink);
-$accent1: var(--accent1);
-$accent2: var(--accent2);
-$highlight: var(--highlight);
+$paper: map-get(map-get($themes, $ts), "paper");
+$ink: map-get(map-get($themes, $ts), $key: "ink");
+$accent1: map-get(map-get($themes, $ts), "accent1");
+$accent2: map-get(map-get($themes, $ts), "accent2");
+$highlight: map-get(map-get($themes, $ts), "highlight");
 
 $texture: url('@/assets/images/papertexture.png');

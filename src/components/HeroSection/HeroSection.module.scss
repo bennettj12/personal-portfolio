@@ -3,7 +3,9 @@
     display: flex;
     min-height: 400px;
 }
-
+.name{
+    color: $accent1;
+}
 .infoSection{
     display: flex;
     flex-direction: column;

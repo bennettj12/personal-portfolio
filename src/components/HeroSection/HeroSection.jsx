@@ -4,7 +4,6 @@ import styles from './HeroSection.module.scss'
 import { motion } from 'framer-motion'
 
 const info = {
-    headline: "Hi! I'm Bennett",
     aboutSnippet: `
         I enjoy building tools and projects that bridge code and creativity.
     `,
@@ -30,7 +29,7 @@ export default function HeroSection() {
                         duration: 0.5,
                         delay: getAnimDelay()
                 }}>
-                    {info.headline}
+                    Hi! I'm <span className={styles.name}>Bennett</span>
                 </motion.h1>
                 <Divider delay={getAnimDelay()}/>
                 <motion.p
