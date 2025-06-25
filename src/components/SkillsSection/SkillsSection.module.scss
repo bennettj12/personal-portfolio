@@ -1,12 +1,49 @@
 .skillsContainer {
     margin: 0;
-    margin-top: 0;
+    margin-top: 2rem;
     margin-bottom: 4rem;
     display: flex;
     position: relative;
     min-height: 300px;
-    background: $highlight;
     padding: 0;
+    justify-content: space-between;
+    //border: 1px solid $accent2;
+    
+}
+.skillsIcon {
+    margin: 0 auto;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: $accent1;
+}
+.skillsBox {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding: 1rem 2rem;
+    margin: 1rem;
+    //border: 2px solid $ink;
+    & h3 {
+        font-size: 2.25rem;
+        font-weight: 300;
+        margin: 0;
+        text-align: center;
+        color: $ink;
+    }
+    & p {
+        margin: 0;
+    }
+
+}
+.school {
+    font-size: 1.1rem;
+
+}
+.degree {
+    font-size: 1.75rem;
+    font-weight: 100;
+    
     
 }
 .headline {

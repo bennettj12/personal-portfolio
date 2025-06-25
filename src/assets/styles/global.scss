@@ -1,3 +1,4 @@
+@use 'sass:color';
 #root {
   padding: 0;
   text-align: center;
@@ -27,7 +28,7 @@
     linear-gradient(
       to bottom,
       $paper 0%,
-      darken($paper, 8%) 100%
+      color.scale($paper, $lightness: -12%) 100%
     ),
     $texture; 
   background-blend-mode: soft-light;
