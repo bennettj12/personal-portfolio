@@ -37,7 +37,7 @@ $themes: (
         "highlight": #F3E9E0,     
     ),
     "charcoal": (
-        "paper": #f8e9e5,         
+        "paper": #faf2f0,         
         "ink": #181926,           
         "accent1": #6B7F99,       
         "accent2": #ba877a,       
@@ -62,4 +62,4 @@ $accent1: map.get(map.get($themes, $ts), "accent1");
 $accent2: map.get(map.get($themes, $ts), "accent2");
 $highlight: map.get(map.get($themes, $ts), "highlight");
 
-$texture: url('@/assets/images/papertexture.png');
+$texture: url('@/assets/images/clean-gray-paper.png');

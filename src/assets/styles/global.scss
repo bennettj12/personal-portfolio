@@ -28,11 +28,11 @@
     linear-gradient(
       to bottom,
       $paper 0%,
-      color.scale($paper, $lightness: -12%) 100%
+      color.scale($paper, $lightness: -8%) 100%
     ),
     $texture; 
-  background-blend-mode: soft-light;
-  background-attachment: fixed;
+  background-blend-mode:color;
+  background-attachment:scroll;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
