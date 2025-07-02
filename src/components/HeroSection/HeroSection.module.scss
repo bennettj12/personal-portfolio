@@ -2,6 +2,8 @@
     display: flex;
     min-height: 400px;
     margin-top: 2rem;
+    margin-bottom: 1rem;
+    justify-content: space-between;
 }
 .name{
     color: $accent1;
@@ -9,7 +11,7 @@
 .infoSection{
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 58%;
     min-height: inherit;
     text-align: left;
     justify-content: center;
@@ -19,13 +21,15 @@
     }
     & > p {
         margin-left: 1em;
-        margin-top: 0.5em;
+        margin-top: -1rem;
         font-size: 1.5rem;
     }
 }
 .portraitSection{
     width: 40%;
     min-height: inherit;
-    background: $highlight;
     margin: 0;
+    & *{
+        height: 100%;
+    }
 }

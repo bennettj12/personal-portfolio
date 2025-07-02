@@ -1,24 +1,31 @@
-import styles from './AnimatedButton.module.scss'
-import { motion, useAnimation } from 'framer-motion'
-import { useEffect, forwardRef, useRef, useState } from 'react'
+import { useRef, useEffect, useState } from "react"
+import styles from './SketchOutline.module.scss'
+import { useAnimation, motion } from "framer-motion";
+/**
+ * SketchOutline.jsx
+ * Wrapper Class which renders a hand-drawn style border around its content
+ */
 
-const AnimatedButton = forwardRef(({children, ...props}, ref) => {
-    const thickness = props.thickness || 2;
-    const controls = useAnimation();
-    const containerRef = useRef(null);
 
+export default function SketchOutline(props) {
+
+    const container = useRef(null);
+
+
+    const hover = props.hover || false;
     const [isHovering,setIsHovering] = useState(false);
 
-    const variance = isHovering ? 5 : 2.5; // Double wobble on hover
+    const variance = (hover) ? (isHovering ? 0 : 2) : 2;
+
+    const controls = useAnimation();
 
     const generatePath = (v) => {
-
-        if(!containerRef.current) return '';
-        const width = containerRef.current.clientWidth;
-        const height = containerRef.current.clientHeight;
+        if(!container.current) return '';
+        const width = container.current.clientWidth;
+        const height = container.current.clientHeight;
 
         // wobbly lines
-        const segments = 6 + Math.floor(Math.random() * 6);
+        const segments = 12 + Math.floor(Math.random() * 12);
         let path = `M0,${10 + Math.random()*v}`
 
         //top left -> top right
@@ -47,10 +54,12 @@ const AnimatedButton = forwardRef(({children, ...props}, ref) => {
         }
 
         return path + 'Z';
+
     }
-
     useEffect(() => {
-
+        controls.set({
+                d: generatePath(variance)
+            })
         const interval = setInterval(() => {
             controls.set({
                 d: generatePath(variance)
@@ -61,32 +70,25 @@ const AnimatedButton = forwardRef(({children, ...props}, ref) => {
     });
 
 
-
-    return(
+    return (
         <motion.div 
-            className={styles.btnContainer}
-            ref={ref}
-            {...props}
+            ref={container} 
+            style={props.style} 
+            className={styles.sketchOutline}
             onHoverStart={() => setIsHovering(true)}
             onHoverEnd={() => setIsHovering(false)}
             >
-            <button ref={containerRef} className={styles.btn}> 
-                {children}
-            </button>
+
             <svg className={styles.border} >
                 <motion.path 
-                    className={styles.borderPath}
                     animate={controls}
+                    className={styles.borderPath}
                     fill="none"
-                    strokeWidth={thickness}
+                    strokeWidth="1"
                     filter="url(#pencilTexture)"
                 />
             </svg>
+            {props.children}
         </motion.div>
     )
-
-});
-AnimatedButton.displayName = 'AnimatedButton';
-
-export { AnimatedButton };
-export const MotionAnimatedButton = motion(AnimatedButton);
+}

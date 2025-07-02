@@ -9,7 +9,7 @@ export default function Footer() {
             <div className={styles.footerContainer} >
                 <section className={styles.footerLinks}>
                     <h2>MY LINKS:</h2>
-                    <Divider amplitude={-5} color='var(--paper)' />
+                    <Divider amplitude={1.2} color='var(--paper)' />
                     <a href="https://www.linkedin.com/in/bennett-johnson/">
                         {/* add icon */} LinkedIn
                     </a>

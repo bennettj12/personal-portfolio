@@ -42,7 +42,7 @@ export default function BrushBorder({
 
         ctx.beginPath();
         ctx.moveTo(0, height)
-        for (let i = 0; i <= parentWidth; i += 6) {
+        for (let i = 0; i <= parentWidth; i += 3) {
             const noise = (
                 (Math.sin(i * (0.01)-(sinPhase/5)) * 8)- 4 + // Base wave
                 (Math.random() * v - (v/2)) +  // Randomness
@@ -71,7 +71,7 @@ export default function BrushBorder({
         const interval = setInterval(() => {
             drawBorder();
             sinPhase++;
-        }, 150)
+        }, 200)
 
         //resize handling
         const handleResize = () => drawBorder();

@@ -6,7 +6,7 @@ export default function HomePage() {
     return (
         <>
             <HeroSecton/>
-            <Divider color="var(--accent2)" reverse animate={false}/>
+            <Divider amplitude={1.5} thickness={1}/>
             <SkillsSection />
         </>
     )

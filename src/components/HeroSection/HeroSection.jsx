@@ -1,7 +1,9 @@
 import { MotionAnimatedButton } from '../AnimatedButton/AnimatedButton.jsx';
 import Divider from '../Divider/divider.jsx';
+import SketchOutline from '../SketchOutline/SketchOutline.jsx';
 import styles from './HeroSection.module.scss'
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 
 const info = {
     aboutSnippet: `
@@ -18,20 +20,24 @@ export default function HeroSection() {
         delay += delayDelta;
         return c;
     }
-
+    const navigate = useNavigate();
     return (
         <main className={styles.aboutMe}>
             <section className={styles.infoSection}>
-                <motion.h1 
-                    initial={{opacity: 0}}
-                    animate={{opacity: 1}}
-                    transition={{
-                        duration: 0.5,
-                        delay: getAnimDelay()
-                }}>
+                {/* <motion.div> */}
+                    <motion.h1 
+                        initial={{opacity: 0}}
+                        animate={{opacity: 1}}
+                        transition={{
+                            duration: 0.5,
+                            delay: getAnimDelay()
+                    }}>
                     Hi! I'm <span className={styles.name}>Bennett</span>
-                </motion.h1>
-                <Divider delay={getAnimDelay()}/>
+                    <Divider/>
+                    </motion.h1>
+                    
+                {/* </motion.div> */}
+
                 <motion.p
                     initial={{opacity: 0}}
                     animate={{opacity: 1}}
@@ -48,13 +54,26 @@ export default function HeroSection() {
                     transition={{
                         duration: 0.5,
                         delay: getAnimDelay()
-                }}>
+                    }}
+                    onClick={() => navigate('/projects')}
+                >
                     {info.ctaButton}
                 </MotionAnimatedButton>
             </section>
-            <figure className={styles.portraitSection}>
+            <motion.figure 
+                initial={{opacity: 0}}
+                animate={{opacity: 1}}
+                transition={{
+                    duration: 0.5,
+                    delay: getAnimDelay() - 0.5
+                }}
+                className={styles.portraitSection}>
+                <SketchOutline>
+
+                
                 {/* Animated portrait element */}
-            </figure>
+                </SketchOutline>
+            </motion.figure>
         </main>
     );
 }

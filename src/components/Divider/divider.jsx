@@ -1,50 +1,87 @@
 import styles from './Divider.module.scss';
 
 import {useRef, useState, useEffect} from 'react'
+import { motion, useAnimation } from 'framer-motion'
 
 export default function Divider({
 
     color = "var(--ink)",
     thickness = 1.5,
-    amplitude = 7,
-    reverse = false,
+    amplitude = 2,
+    segments = 10,
     delay = 0,
     animate = true
 }) {
 
-    const pathRef = useRef(null);
-    const [pathLength, setPathLength] = useState(0);
+    const containerRef = useRef(null);
+    const [width, setWidth] = useState(0);
+    const controls = useAnimation();
 
+    // measure container and listen for resize
     useEffect(() => {
-        if(pathRef.current && animate) {
-            const length = pathRef.current.getTotalLength();
-            setPathLength(length);
+
+        if (!containerRef.current) return;
+    
+        const updateWidth = () => { 
+            setWidth(containerRef.current.clientWidth);
         }
+
+        updateWidth();
+        window.addEventListener('resize', updateWidth);
+
+        return () => window.removeEventListener('resize', updateWidth);
     }, [])
 
-    const path = (reverse) 
-        ? `M100,12 C80,${4+amplitude} 60,${15-amplitude} 40,${12+amplitude} 20,${12-amplitude} 0,12, 0,12`
-        : `M0,12 C20,${12-amplitude} 40,${12+amplitude} 60,${15-amplitude} 80,${4+amplitude} 100,12 100,12`;
+
+    const generatePath = () => {
+        if(!width) return '';
+
+        let path = `M0,12`
+
+        for(let i = 1; i <= segments; i++) {
+            const x = (width/segments) * i;
+            const y = 12 + (Math.random() * amplitude * 2 - amplitude);
+            path += `L${x},${y}`;
+        }
+        return path + `L${width},12`;
+    }
+    // 3. Animation sequence
+    useEffect(() => {
+        const interval = setInterval(() => {
+            controls.set({
+                d: generatePath()
+            })
+        }, 200)
+
+        return () => clearInterval(interval);
+    })
+
+
+
     return (
         <div 
+            ref={containerRef}
             className={styles.divider}
             style={{
                 '--delay': `${delay}s`,
                 '--stroke-color': color,
                 '--stroke-width': thickness,
-                '--path-length': pathLength
             }}
         >
             <svg
                 width="100%"
                 height="24"
-                viewBox='0 0 100 24'
+                viewBox={`0 0 ${width} 24`}
                 preserveAspectRatio='none'
             >
-                <path
-                    ref={pathRef}
-                    d={path}
+                <motion.path
+                    d={generatePath()}
                     filter='url(#pencilTexture)'
+                    stroke="currentColor"
+                    strokeWidth={thickness}
+                    fill="none"
+                    animate={controls}
+                    initial= {{pathLength: 0}}
                 />
             </svg>
         </div>
