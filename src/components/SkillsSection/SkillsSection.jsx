@@ -30,7 +30,7 @@ export default function SkillsSection() {
                     <div className={styles.skillsBox}> 
                         <SlGraduation className={styles.skillsIcon} />
                         <h3>Education</h3>
-                        <Divider amplitude={1.2}/>
+                        <Divider amplitude={1.2} thickness={1}/>
                         <p className={styles.educationTitle}>B.S. Computer Science</p>
                         <hr className={styles.skillsHR} />
                         <div className={styles.educationBlock}>
@@ -66,7 +66,7 @@ export default function SkillsSection() {
                     <div className={styles.skillsBox}> 
                         <SlLayers className={styles.skillsIcon} />
                         <h3>Toolset</h3>
-                        <Divider amplitude={1.2}/>
+                        <Divider amplitude={1.2} thickness={1}/>
                     </div>
                 </SketchOutline>
             </motion.div>
@@ -81,7 +81,7 @@ export default function SkillsSection() {
                     <div className={styles.skillsBox}> 
                         <SlPencil className={styles.skillsIcon} />
                         <h3>Etc...</h3>
-                        <Divider amplitude={1.2}/>
+                        <Divider amplitude={1.2} thickness={1}/>
                     </div>
                 </SketchOutline>
             </motion.div>
