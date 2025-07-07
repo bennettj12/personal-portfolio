@@ -33,7 +33,7 @@ export default function HeroSection() {
                             delay: getAnimDelay()
                     }}>
                     Hi! I'm <span className={styles.name}>Bennett</span>
-                    <Divider/>
+                    <Divider amplitude={1}/>
                     </motion.h1>
                     
                 {/* </motion.div> */}

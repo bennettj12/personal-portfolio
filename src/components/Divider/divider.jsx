@@ -10,27 +10,11 @@ export default function Divider({
     amplitude = 2,
     segments = 10,
     delay = 0,
-    animate = true
 }) {
 
     const containerRef = useRef(null);
     const [width, setWidth] = useState(0);
     const controls = useAnimation();
-
-    // measure container and listen for resize
-    useEffect(() => {
-
-        if (!containerRef.current) return;
-    
-        const updateWidth = () => { 
-            setWidth(containerRef.current.clientWidth);
-        }
-
-        updateWidth();
-        window.addEventListener('resize', updateWidth);
-
-        return () => window.removeEventListener('resize', updateWidth);
-    }, [])
 
 
     const generatePath = () => {
@@ -45,15 +29,30 @@ export default function Divider({
         }
         return path + `L${width},12`;
     }
-    // 3. Animation sequence
+    // 3. Animation sequence + resize observer
     useEffect(() => {
+        if (!containerRef.current) return;
         const interval = setInterval(() => {
             controls.set({
                 d: generatePath()
             })
         }, 200)
 
-        return () => clearInterval(interval);
+        const updateWidth = () => { 
+            setWidth(containerRef.current.clientWidth);
+        }
+        updateWidth();
+        const observer = new ResizeObserver(() => {
+            updateWidth();
+            controls.set({
+                d: generatePath()
+            })
+        })
+        observer.observe(containerRef.current);
+        return () => {
+            clearInterval(interval);
+            observer.disconnect();
+        }
     })
 
 

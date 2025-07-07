@@ -26,7 +26,7 @@ export default function Layout() {
             <div className={styles.appContainer}>
                 <SVGFilters />
                 <Header />
-                <Divider thickness={1} reverse/>
+                <Divider thickness={1} amplitude={1}/>
 
                 <AnimatePresence mode="wait">
                     <motion.main 

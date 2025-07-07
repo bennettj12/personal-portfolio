@@ -45,7 +45,7 @@ $themes: (
     )
 );
 // selected theme
-$ts: "charcoal";
+$ts: "sketchbook";
 $active-theme: map.get($themes, $ts);
 
 :root {

@@ -65,8 +65,18 @@ export default function SketchOutline(props) {
                 d: generatePath(variance)
             })
         }, 200)
+        const observer = new ResizeObserver(() => {
+            controls.set({
+                d: generatePath(variance)
+            })
+        });
+        observer.observe(container.current);
 
-        return () => clearInterval(interval);
+        return () => {
+            clearInterval(interval);
+            observer.disconnect();
+        }
+        
     });
 
 

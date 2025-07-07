@@ -3,6 +3,9 @@ import Divider from '../Divider/divider.jsx'
 import SketchOutline from '../SketchOutline/SketchOutline.jsx';
 import styles from './SkillsSection.module.scss'
 import { SlGraduation, SlLayers, SlPencil } from "react-icons/sl";
+import { FaReact, FaJava, FaPython   } from "react-icons/fa";
+import { SiDotnet } from "react-icons/si";
+import { IoLogoJavascript } from "react-icons/io5";
 
 import { motion } from 'framer-motion';
 
@@ -14,9 +17,6 @@ export default function SkillsSection() {
         delay += delayDelta;
         return c;
     }
-    const skillBoxStyle = {
-        margin: "0 .75rem",
-    };
     return (
         <div className={styles.skillsContainer}>
             <motion.div
@@ -26,7 +26,7 @@ export default function SkillsSection() {
                             duration: 0.5,
                             delay: getAnimDelay()
                 }}>
-                <SketchOutline style={skillBoxStyle}>
+                <SketchOutline>
                     <div className={styles.skillsBox}> 
                         <SlGraduation className={styles.skillsIcon} />
                         <h3>Education</h3>
@@ -62,11 +62,22 @@ export default function SkillsSection() {
                     duration: 0.5,
                     delay: getAnimDelay()
             }}>
-                <SketchOutline style={skillBoxStyle}>
+                <SketchOutline>
                     <div className={styles.skillsBox}> 
                         <SlLayers className={styles.skillsIcon} />
                         <h3>Toolset</h3>
                         <Divider amplitude={1.2} thickness={1}/>
+                        <p>I work with a variety of different technologies in order to build & contribute to projects, here are a few:</p>
+                        <hr className={styles.skillsHR} />
+                        <ul>
+                            <li><span><FaJava /></span> Java</li>
+                            <li><span><IoLogoJavascript /></span> Javascript</li>
+                            <li><span><FaReact /></span> React</li>
+                            <li><span><FaPython /></span> Python</li>
+                            <li><span><SiDotnet /></span> C#/.NET</li>
+
+                        </ul>
+                        
                     </div>
                 </SketchOutline>
             </motion.div>
@@ -77,11 +88,19 @@ export default function SkillsSection() {
                     duration: 0.5,
                     delay: getAnimDelay()
             }}>
-                <SketchOutline style={skillBoxStyle}>
+                <SketchOutline>
                     <div className={styles.skillsBox}> 
                         <SlPencil className={styles.skillsIcon} />
-                        <h3>Etc...</h3>
+                        <h3>Currently Exploring</h3>
                         <Divider amplitude={1.2} thickness={1}/>
+                        <p>I work with a variety of different technologies in order to build & contribute to projects, here are a few:</p>
+                        <hr className={styles.skillsHR} />
+                        <ul>
+                            <li><span><FaJava /></span> Motion animations in React</li>
+                            <li><span><IoLogoJavascript /></span> Javascript</li>
+
+
+                        </ul>
                     </div>
                 </SketchOutline>
             </motion.div>
