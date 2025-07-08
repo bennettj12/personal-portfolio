@@ -1,11 +1,16 @@
 import styles from './AnimatedButton.module.scss'
 import { motion, useAnimation } from 'framer-motion'
-import { useEffect, forwardRef, useRef, useState } from 'react'
+import { useEffect, forwardRef, useRef, useState, useContext } from 'react'
+import { MotionContext } from '@/context/MotionContext.jsx';
+
 
 const AnimatedButton = forwardRef(({children, ...props}, ref) => {
     const thickness = props.thickness || 2;
     const controls = useAnimation();
     const containerRef = useRef(null);
+
+    const motionEnabled = useContext(MotionContext).animationsEnabled
+    
 
     const [isHovering,setIsHovering] = useState(false);
 
@@ -50,12 +55,15 @@ const AnimatedButton = forwardRef(({children, ...props}, ref) => {
     }
 
     useEffect(() => {
-
-        const interval = setInterval(() => {
+        // initial draw
+        controls.set({
+            d: generatePath(variance)
+        })
+        const interval = (motionEnabled) ? setInterval(() => {
             controls.set({
                 d: generatePath(variance)
             })
-        }, 200)
+        }, 200) : null;
 
         return () => clearInterval(interval);
     });

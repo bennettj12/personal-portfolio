@@ -1,7 +1,8 @@
 import styles from './Divider.module.scss';
 
-import {useRef, useState, useEffect} from 'react'
+import {useRef, useState, useEffect, useContext} from 'react'
 import { motion, useAnimation } from 'framer-motion'
+import { MotionContext } from '@/context/MotionContext.jsx';
 
 export default function Divider({
 
@@ -15,6 +16,8 @@ export default function Divider({
     const containerRef = useRef(null);
     const [width, setWidth] = useState(0);
     const controls = useAnimation();
+
+    const motionEnabled = useContext(MotionContext).animationsEnabled
 
 
     const generatePath = () => {
@@ -32,11 +35,11 @@ export default function Divider({
     // 3. Animation sequence + resize observer
     useEffect(() => {
         if (!containerRef.current) return;
-        const interval = setInterval(() => {
+        const interval = (motionEnabled) ? setInterval(() => {
             controls.set({
                 d: generatePath()
             })
-        }, 200)
+        }, 200) : null;
 
         const updateWidth = () => { 
             setWidth(containerRef.current.clientWidth);

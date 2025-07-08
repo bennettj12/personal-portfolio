@@ -1,4 +1,5 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback, useContext } from 'react';
+import { MotionContext } from '@/context/MotionContext.jsx';
 import styles from './BrushBorder.module.scss'
 /**
  * Footer border component based on stacked sin waves.
@@ -13,7 +14,7 @@ let sinPhase = 0;
 export default function BrushBorder({
     color = "var('--ink')"
 }) {
-
+    const motionEnabled = useContext(MotionContext).animationsEnabled
     const canvasRef = useRef(null);
     const containerRef = useRef(null);
     const drawBorder = useCallback(() => {
@@ -68,10 +69,10 @@ export default function BrushBorder({
         // Draw initial border
         drawBorder();
         // animated wavelike border
-        const interval = setInterval(() => {
+        const interval = (motionEnabled) ? setInterval(() => {
             drawBorder();
             sinPhase++;
-        }, 200)
+        }, 200) : null;
 
         //resize handling
         const handleResize = () => drawBorder();
@@ -83,7 +84,7 @@ export default function BrushBorder({
         }
 
         return cleanup;
-    }, [drawBorder]);
+    }, [drawBorder, motionEnabled]);
 
     return (
         <div ref={containerRef} className={styles.brushBorder}>

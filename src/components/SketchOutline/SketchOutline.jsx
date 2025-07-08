@@ -1,6 +1,7 @@
-import { useRef, useEffect, useState } from "react"
+import { useRef, useEffect, useState, useContext } from "react"
 import styles from './SketchOutline.module.scss'
 import { useAnimation, motion } from "framer-motion";
+import { MotionContext } from "@/context/MotionContext.jsx";
 /**
  * SketchOutline.jsx
  * Wrapper Class which renders a hand-drawn style border around its content
@@ -10,6 +11,8 @@ import { useAnimation, motion } from "framer-motion";
 export default function SketchOutline(props) {
 
     const container = useRef(null);
+
+    const motionEnabled = useContext(MotionContext).animationsEnabled
 
 
     const hover = props.hover || false;
@@ -60,11 +63,11 @@ export default function SketchOutline(props) {
         controls.set({
                 d: generatePath(variance)
             })
-        const interval = setInterval(() => {
+        const interval = (motionEnabled) ? setInterval(() => {
             controls.set({
                 d: generatePath(variance)
             })
-        }, 200)
+        }, 200) : null;
         const observer = new ResizeObserver(() => {
             controls.set({
                 d: generatePath(variance)

@@ -44,4 +44,66 @@ h2 {
     margin: 0;
     font-weight: 200;
     font-size: xx-large;
+    & b {
+        transition: color .3s ease;
+    }
+    &:hover b {
+        color: $accent2;
+    }
+}
+
+
+
+.motionToggle {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    position: relative;
+    &:hover .toggleLabel {
+        color: $accent2;
+    }
+}
+
+.toggleInput {
+    // hide base checkbox
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+}
+
+.toggleTrack {
+    position: relative;
+    width: 3rem;
+    height: 1.5rem;
+    background-color: $ink;
+    border: 1px solid $paper;
+    border-radius: 2rem;
+    transition: all 0.3s ease;
+}
+
+.toggleThumb {
+    position: absolute;
+    top: 0.15rem;
+    left: 0.15rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: $paper;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+.toggleInput:checked + .toggleTrack {
+  background-color: $accent2;
+}
+.toggleInput:checked + .toggleTrack .toggleThumb {
+  transform: translateX(1.5rem);
+  background-color: $paper;
+}
+.toggleLabel {
+    font-size: 1.2rem;
+    user-select: none;
+    transition: all .1s ease;
 }
