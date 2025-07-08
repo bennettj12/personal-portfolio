@@ -10,17 +10,17 @@ export default function SVGFilters() {
                     id="pencilTexture"
                     primitiveUnits="userSpaceOnUse"
                     x="0" y="0"
-                    width="140%" height="140%"
+                    width="1" height="1"
                     colorInterpolationFilters="sRGB"
                 >
                     <feTurbulence 
                         type="fractalNoise" 
-                        baseFrequency="0.35" 
-                        numOctaves="5"
+                        baseFrequency="0.2" 
+                        numOctaves="3"
                     />
                     <feDisplacementMap 
                         in="SourceGraphic" 
-                        scale="0.1"
+                        scale="3.5"
                     />
                 </filter>      
             </defs>

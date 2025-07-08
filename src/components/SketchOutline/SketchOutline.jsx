@@ -89,7 +89,7 @@ export default function SketchOutline(props) {
             onHoverEnd={() => setIsHovering(false)}
             >
 
-            <svg className={styles.border} >
+            <svg style={{ willChange: 'contents' }} className={styles.border} >
                 <motion.path 
                     animate={controls}
                     className={styles.borderPath}

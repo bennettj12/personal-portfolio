@@ -25,7 +25,7 @@ export default function BrushBorder({
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
 
-        const v = 2; // random variance
+        const v = 1.5; // random variance
 
         canvas.width = parentWidth;
         canvas.height = height;
@@ -42,7 +42,7 @@ export default function BrushBorder({
 
         ctx.beginPath();
         ctx.moveTo(0, height)
-        for (let i = 0; i <= parentWidth; i += 3) {
+        for (let i = 0; i <= parentWidth; i += 4) {
             const noise = (
                 (Math.sin(i * (0.01)-(sinPhase/5)) * 8)- 4 + // Base wave
                 (Math.random() * v - (v/2)) +  // Randomness
