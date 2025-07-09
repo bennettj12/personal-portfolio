@@ -3,13 +3,13 @@ import Divider from '../Divider/divider.jsx';
 import SketchOutline from '../SketchOutline/SketchOutline.jsx';
 import styles from './HeroSection.module.scss'
 import { motion } from 'framer-motion'
-import { useNavigate } from 'react-router-dom'
+import useAnimatedNavigation from '@/hooks/useAnimatedNavigation.jsx';
 
 const info = {
     aboutSnippet: `
         I enjoy building tools and projects that bridge code and creativity.
     `,
-    ctaButton: "See my projects!"
+    ctaButton: "See my projects"
 }
 
 export default function HeroSection() {
@@ -20,7 +20,7 @@ export default function HeroSection() {
         delay += delayDelta;
         return c;
     }
-    const navigate = useNavigate();
+    const { animatedNavigate } = useAnimatedNavigation();
     return (
         <main className={styles.aboutMe}>
             <section className={styles.infoSection}>
@@ -55,7 +55,7 @@ export default function HeroSection() {
                         duration: 0.5,
                         delay: getAnimDelay()
                     }}
-                    onClick={() => navigate('/projects')}
+                    onClick={() => animatedNavigate('/projects')}
                 >
                     {info.ctaButton}
                 </MotionAnimatedButton>

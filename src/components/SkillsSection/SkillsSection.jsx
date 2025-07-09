@@ -3,13 +3,19 @@ import Divider from '../Divider/divider.jsx'
 import SketchOutline from '../SketchOutline/SketchOutline.jsx';
 import styles from './SkillsSection.module.scss'
 import { SlGraduation, SlLayers, SlPencil } from "react-icons/sl";
-import { FaReact, FaJava, FaPython   } from "react-icons/fa";
+import { FaReact, FaJava, FaPython, FaPaintBrush } from "react-icons/fa";
+import { FaArrowsRotate } from "react-icons/fa6";
 import { SiDotnet } from "react-icons/si";
 import { IoLogoJavascript } from "react-icons/io5";
 
 import { motion } from 'framer-motion';
 
 export default function SkillsSection() {
+
+    const rotate = {
+
+    }
+
     let delay = 1;
     const delayDelta = 0.40;
     const getAnimDelay = () => {
@@ -93,12 +99,24 @@ export default function SkillsSection() {
                         <SlPencil className={styles.skillsIcon} />
                         <h3>Currently Exploring</h3>
                         <Divider amplitude={1.2} thickness={1}/>
-                        <p>I work with a variety of different technologies in order to build & contribute to projects, here are a few:</p>
+                        <p>I'm committed to improving my skills both technical and otherwise. Here are some of the things I've been doing lately:</p>
                         <hr className={styles.skillsHR} />
                         <ul>
-                            <li><span><FaJava /></span> Motion animations in React</li>
-                            <li><span><IoLogoJavascript /></span> Javascript</li>
-
+                            <li><span><FaReact /></span> In-depth study of React</li>
+                            <motion.li
+                                initial="initial"
+                                animate="initial"
+                                whileHover="animate"
+                            >
+                                <motion.span
+                                    variants={{
+                                        initial: {rotate: 0},
+                                        animate: {rotate: 180},
+                                    }}
+                                >
+                                    <FaArrowsRotate />
+                                </motion.span> Motion/Framer-Motion animations</motion.li>
+                            <li><span><FaPaintBrush /></span> Practicing Art & Design skills</li>
 
                         </ul>
                     </div>
