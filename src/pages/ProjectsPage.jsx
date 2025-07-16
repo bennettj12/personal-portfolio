@@ -1,16 +1,24 @@
 import ProjectCard from "@/components/ProjectCard/ProjectCard.jsx";
 import styles from './ProjectsPage.module.scss'
+import { projects } from "@/components/data/projects.jsx";
 export default function ProjectsPage() {
     return (
         <>
-        <h1>
-            Projects
-        </h1>
-        <div className={styles.projectsSection}>
-            <ProjectCard/>
-            <ProjectCard/>
-            <ProjectCard/>
-        </div>
+            <div className={styles.projectsSection}>
+                {projects.map((project) => {
+                    return (
+                    <ProjectCard 
+                        id={project.id}
+                        title={project.title}
+                        description={project.description}
+                        image={project.image}
+                    />);
+                })}
+
+               
+                <ProjectCard/>
+                <ProjectCard/>
+            </div>
 
         </>
 

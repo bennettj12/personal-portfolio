@@ -1,0 +1,116 @@
+
+.layout {
+    margin-bottom: 7rem;
+}
+.projectInfo {
+    float: right;
+    max-width: 400px;
+    min-height: 200px;
+    margin: 1rem 2rem;
+    margin-right: 0;
+    margin-top: 0;
+    @include mobile {
+        float: none;
+        max-width: none;
+    }
+
+}
+.metaHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5rem 1rem;
+    & button {
+        font-size: 1.2rem;
+    }
+    & h3 {
+        font-size: 1.5rem;
+    }
+}
+.metaImage {
+    width: 85%;
+    height: auto;
+    margin-top: 2rem;
+}
+.metaInfobox {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 4fr;
+    & * {
+        padding: .5rem;
+    }
+    & a{
+        color: $accent1;
+    }
+    padding-bottom: .75rem;
+}
+.gridTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+
+}
+.gridItem {
+    text-align: right;
+    font-size: 1.25rem;
+    font-weight: 200;
+}
+
+.markdownContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.markdownContent {
+  text-align: left;
+  
+  h1, h2, h3, h4 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  
+  p {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+  
+  ul, ol {
+    margin-bottom: 1.7rem;
+    padding-left: 2rem;
+    font-size: 1.5rem;
+  }
+  ul {
+    list-style-type: circle;
+  }
+  ol {
+    list-style-type: decimal;
+  }
+  li {
+    margin-bottom: 0.5rem;
+    display: list-item;
+    &::marker {
+        color: $ink;
+    }
+  }
+  
+  pre {
+    background: #f5f5f5;
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+  }
+  
+  code {
+    font-family: monospace;
+    background: #f5f5f5;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+  }
+  
+  a {
+    color: var(--link-color);
+    text-decoration: underline;
+  }
+}

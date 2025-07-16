@@ -8,7 +8,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react()
+  ],
   resolve: {
     alias: {
       '@styles': path.resolve(__dirname, './src/assets/styles'),
@@ -29,6 +31,9 @@ export default defineConfig({
       generateScopedName: '[local]_[hash:base64:5]'
     }
   },
-  
+  assetsInclude: ['**/*.md'],
+  optimizeDeps: {
+    exclude: ['marked'] 
+  }
 
 })
