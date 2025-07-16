@@ -1,0 +1,44 @@
+.projectCard {
+    min-height: 350px;
+    display: flex;
+    
+}
+.projectImage {
+    width: 30%;
+    min-height: 200px;
+    min-width: 200px;
+    margin: 2rem 1.2rem;
+
+    & img {
+        width: 100%;
+        height: auto;
+    }
+}
+.projectInfo {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    padding: 1rem 1rem 0;
+    text-align: left;
+    flex-grow: 1;
+}
+.projectTitle {
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: -.5rem
+}
+.projectDescription {
+    font-size: 1.25rem;
+    margin-top: -1rem;
+    flex-grow: 1;
+}
+.projectButton {
+    display: flex;
+    align-self: flex-end;
+    align-items: flex-end;
+    flex-grow: 1;
+    margin-bottom: 0 !important;
+    & div {
+        margin: 0 !important;
+    }
+}

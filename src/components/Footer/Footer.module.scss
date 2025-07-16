@@ -13,7 +13,9 @@
     padding-top: 1rem;
     & > *{
         padding: 1rem 2rem;
-        box-sizing: border-box;
+    }
+    @include mobile {
+        flex-wrap: wrap-reverse;
     }
 }
 .footerInfo {
@@ -23,6 +25,9 @@
     justify-content: center;
 
     width: 60%;
+    @include mobile {
+        width: 100%;
+    }
 }
 .footerLinks {
 
@@ -37,6 +42,9 @@
         font-weight: 600;
         margin-bottom: 0.75rem;
         margin-left: .5rem;
+    }
+    @include mobile {
+        width: 100%;
     }
 
 }
