@@ -36,13 +36,14 @@
     display: grid;
     align-items: center;
     grid-template-columns: 1fr 4fr;
+    padding-bottom: .75rem;
     & * {
         padding: .5rem;
     }
     & a{
         color: $accent1;
     }
-    padding-bottom: .75rem;
+    
 }
 .gridTitle {
     font-size: 1.5rem;
@@ -69,6 +70,12 @@
     margin-bottom: 1rem;
     font-weight: 500;
   }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
   
   p {
     font-size: 1.15rem;
@@ -79,7 +86,7 @@
   ul, ol {
     margin-bottom: 1.7rem;
     padding-left: 2rem;
-    font-size: 1.5rem;
+    font-size: 1.15rem;
   }
   ul {
     list-style-type: circle;
@@ -96,7 +103,7 @@
   }
   
   pre {
-    background: #f5f5f5;
+    background: $ink;
     padding: 1rem;
     border-radius: 4px;
     overflow-x: auto;
@@ -104,9 +111,10 @@
   
   code {
     font-family: monospace;
-    background: #f5f5f5;
+    background: $ink;
     padding: 0.2rem 0.4rem;
     border-radius: 3px;
+    color: $paper;
   }
   
   a {
