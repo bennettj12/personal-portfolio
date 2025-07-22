@@ -7,14 +7,12 @@ import { FaReact, FaJava, FaPython, FaPaintBrush } from "react-icons/fa";
 import { FaArrowsRotate } from "react-icons/fa6";
 import { SiDotnet } from "react-icons/si";
 import { IoLogoJavascript } from "react-icons/io5";
-
+import useAnimatedNavigation from '@/hooks/useAnimatedNavigation.jsx';
 import { motion } from 'framer-motion';
 
 export default function SkillsSection() {
 
-    const rotate = {
-
-    }
+    const { animatedNavigate } = useAnimatedNavigation();
 
     let delay = 1;
     const delayDelta = 0.40;
@@ -54,7 +52,10 @@ export default function SkillsSection() {
                         <p>Built a chess engine & minimax AI in Java for a team-developed web-app</p>
                         
                         <div className={styles.btnContainer}>
-                            <AnimatedButton thickness={1} >Read about it</AnimatedButton>
+                            <AnimatedButton
+                                onClick={() => animatedNavigate('/projects/chess-engine')}
+                                thickness={1} 
+                             >Read about it</AnimatedButton>
                         </div>
 
 

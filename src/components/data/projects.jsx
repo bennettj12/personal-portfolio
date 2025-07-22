@@ -6,5 +6,12 @@ export const projects = [
         image: "/projectimages/chesspencil.png",
         link: "https://github.com/uis-se-capstone-fall2021-2/chess",
         techDescription: "Java, Typescript, React, Spring"
+    }, 
+    {
+        id: "bead-pattern",
+        title: "Bead Pattern Generator",
+        description: "A C# .NET application which generates a grid pattern based on a user created color palette and dimensions. Handles down sampling, color matching, and generates a grid.",
+        link: "https://github.com/bennettj12/Bead-Pattern-Generator",
+        techDescription: "C# .NET, WPF"
     }
 ]

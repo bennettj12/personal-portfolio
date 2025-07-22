@@ -161,15 +161,15 @@ As all rules of chess need to be covered in this Class, `MoveValidator` ended up
 
 ---
 
-The same logic used in our `MoveValidator` helps us greatly as we can reuse some of the same logic in validation to generate a list of potential moves. And with a simple list of all legal moves, we now have the "simple" task of choosing which one to use.
+The same logic used in our `MoveValidator` helps us greatly as we can reuse the logic in validation to generate a list of potential moves. And with a simple list of all legal moves, we now have the "simple" task of choosing which one to use.
 
-The general approach to building a chess AI, at least at the very basic level, we really only need to attempt to answer one question:
+When approaching the problem of building a chess playing AI, at least at the very basic level, the agent needs to be able to look at a chess board and make a guess to the following question:
 
 1. Given the state of the game, who is winning, and by how much?
 
 ### So, who is winning?
 
-A very simple answer to this question can be made, for starters. We can assign an arbitrary value to each piece:
+The answer to this question can start out as something very simple, we can assign an arbitrary value to each piece:
 
 >Pawn:   100
 >Knight:   320
@@ -178,25 +178,24 @@ A very simple answer to this question can be made, for starters. We can assign a
 >Queen:   900
 >King:   999999
 
-
 Then, we add up the values for each piece on each side, and whoever has the larger number can be considered to be 'winning'. 
 The king is set to infinity, or an arbitrarily large amount since losing the king is losing the game.
 
 If we can determine who is winning, we can then use minimax to build a tree of potential future moves & decide which moves result in the highest score.
 Minimax works on the assumption that the other player will also make the best given move available to them.
 
-So in other words:
+So, our general approach is:
 
 1. We look at the game state for all available moves starting from the current position, and we use our sum of piece values to determine how 'winning' or 'losing' each position is.
 2. From these game states, we can branch and look at further future moves, we can search as deeply as we want, but we will quickly create a massive number of potential game states.
 	1. Fortunately, even with a pretty shallow tree of game states, the result is still a somewhat competent AI.
-	2. Additionally, since we assume the opposing player is seeking to minimize our score, and we maximize, we can at times know that the opponent would never take a given path, so we can stop generating board states that come from that position. This is a simple explanation of Alpha Beta pruning.
+	2. Additionally, since we assume the opposing player is seeking to minimize our score, while we try to maximize, we can at times know that the opponent would never take a given path, so we can stop generating board states that come from that position. This practice is called Alpha Beta pruning.
 
 ### Improving our game state analysis
 
-One final improvement I used to improve the AI was to implement tables of positional weights. Essentially, this has the effect of encouraging the board evaluation towards having certain pieces in certain positions. 
-These tables are determined on a piece-by-piece basis, and are arbitrarily defined. 
-Here are some examples, first one for pawns, we can see that center pawns are given a negative weight, and centrally located pawns a positive weight. This should have the effect of encouraging central pawns to be moved to the center of the board, which is generally a decent thing to do in chess.
+One final improvement I made to the AI was to implement tables of positional weights. Essentially, this has the effect of encouraging the board evaluation towards having certain pieces in certain positions.
+These tables are determined on a piece-by-piece basis, and are defined based on good general practices in chess.
+Below are some examples, with the first one for pawns. We can see that the starting position for center (`d2`,`e2`) are given a negative weight, and centrally located pawns (`d4`,`e4`) a positive weight. This should have the effect of encouraging central pawns to be moved to the center of the board, which is generally a decent thing to do in chess.
 
 ``` java
 // pawn square table
@@ -226,10 +225,10 @@ Another example is the table for knights:
 },
 ```
 This table is build to discourage knights from landing on the edges of the board, as it tends to be a worse position.
-I used the premade tables found on this page for my board evaluation function: 
-https://www.chessprogramming.org/Simplified_Evaluation_Function
+For our proejct, I used the premade tables found on this page for my board evaluation function:
+[https://www.chessprogramming.org/Simplified_Evaluation_Function](https://www.chessprogramming.org/Simplified_Evaluation_Function)
 
 ## In Conclusion
 
-Our chess project was overall very successful, and I found it to be a great experience working together with other devs on a project like this.
-The project did a few more things beyond what I've gone over here, such as PGN imports and exports (chess notation system) & everything regarding the React frontend & Spring API. I worked a bit on all of these elements of the project, but I primarily stuck to the engine itself, so I kept my explanation to that.
+We were able to succeed in our goal of creating a playable, multiplayer chess web-app. I found it to be a great experience working together with other devs on a project like this.
+The project did a few more things beyond what I've gone over here, such as PGN imports and exports (chess notation system) & everything regarding the React frontend & Spring API. I worked a bit on all of these elements of the project, but I primarily stuck to the engine itself, so I've kept my explanation to that.
