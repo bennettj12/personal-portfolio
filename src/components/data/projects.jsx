@@ -12,6 +12,16 @@ export const projects = [
         title: "Bead Pattern Generator",
         description: "A C# .NET application which generates a grid pattern based on a user created color palette and dimensions. Handles down sampling, color matching, and generates a grid.",
         link: "https://github.com/bennettj12/Bead-Pattern-Generator",
-        techDescription: "C# .NET, WPF"
+        techDescription: "C# .NET, WPF",
+        image: "/projectimages/chesspencil.png",
+    },
+    {
+        id: "pageupdown",
+        title: "Page Down/Up VSCode extension",
+        description: "A VSCode extension written in Typescript which changes the functionality of the Page Down and Page Up keys. Instead of moving the cursor a set distance, the cursor is moved based on surrounding brackets to help developers more accurately navigate their code.",
+        link: "https://marketplace.visualstudio.com/items?itemName=BennettJohnson.smart-pageup-pagedown",
+        techDescription: "Typescript, VSCode Extensions API",
+        image: "/projectimages/pager.png",
+    
     }
 ]
