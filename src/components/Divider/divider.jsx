@@ -14,6 +14,7 @@ export default function Divider({
 }) {
 
     const containerRef = useRef(null);
+    const pathRef = useRef(null);
     const [width, setWidth] = useState(0);
     const controls = useAnimation();
 
@@ -32,24 +33,26 @@ export default function Divider({
         }
         return path + `L${width},12`;
     }
+
     // 3. Animation sequence + resize observer
     useEffect(() => {
-        if (!containerRef.current) return;
-        const interval = (motionEnabled) ? setInterval(() => {
+        if (!containerRef.current || !pathRef.current) return;
+        const update = () => {
+            if(!containerRef.current || !pathRef.current) return;
             controls.set({
                 d: generatePath()
             })
-        }, 200) : null;
+        }
+        const interval = (motionEnabled) ? setInterval(update, 200) : null;
 
         const updateWidth = () => { 
+            if (!containerRef.current || !pathRef.current) return;
             setWidth(containerRef.current.clientWidth);
         }
         updateWidth();
         const observer = new ResizeObserver(() => {
             updateWidth();
-            controls.set({
-                d: generatePath()
-            })
+            update();
         })
         observer.observe(containerRef.current);
         return () => {
@@ -78,6 +81,7 @@ export default function Divider({
             >
                 <motion.path
                     d={generatePath()}
+                    ref={pathRef}
                     filter='url(#pencilTexture)'
                     stroke="currentColor"
                     strokeWidth={thickness}

@@ -98,7 +98,7 @@ export default function SkillsSection() {
                 <SketchOutline>
                     <div className={styles.skillsBox}> 
                         <SlPencil className={styles.skillsIcon} />
-                        <h3>Currently Exploring</h3>
+                        <h3>Recent Interests</h3>
                         <Divider amplitude={1.2} thickness={1}/>
                         <p>I'm committed to improving my skills both technical and otherwise. Here are some of the things I've been doing lately:</p>
                         <hr className={styles.skillsHR} />

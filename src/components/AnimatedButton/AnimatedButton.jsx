@@ -56,14 +56,14 @@ const AnimatedButton = forwardRef(({children, ...props}, ref) => {
 
     useEffect(() => {
         // initial draw
-        controls.set({
-            d: generatePath(variance)
-        })
-        const interval = (motionEnabled) ? setInterval(() => {
+        const update = () => {
+            if(!containerRef.current) return;
             controls.set({
                 d: generatePath(variance)
             })
-        }, 200) : null;
+        }
+        update();
+        const interval = (motionEnabled) ? setInterval(update, 200) : null;
 
         return () => clearInterval(interval);
     });

@@ -13,7 +13,6 @@ import { useEffect } from 'react';
 export default function Layout() {
     const location = useLocation();
     const controls = useAnimation();
-
     // basic animation controller (set opacity to 1 upon location change)
     // because of useAnimationNavigation.jsx, pathname doesn't change until exit
     // animation has completed!
@@ -35,7 +34,7 @@ export default function Layout() {
                         initial={{ opacity: 0}}
                         animate={controls}
                         transition={{duration: .5}}
-                        exit={{opacity: 0}}
+                        exit={ {opacity: 0}}
                     
                     >
 

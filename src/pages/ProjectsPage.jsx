@@ -9,6 +9,7 @@ export default function ProjectsPage() {
                     return (
                     <ProjectCard 
                         id={project.id}
+                        key={project.id}
                         title={project.title}
                         description={project.description}
                         image={project.image}

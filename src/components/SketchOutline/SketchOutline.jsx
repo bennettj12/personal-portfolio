@@ -11,6 +11,7 @@ import { MotionContext } from "@/context/MotionContext.jsx";
 export default function SketchOutline(props) {
 
     const container = useRef(null);
+    const pathRef = useRef(null);
 
     const motionEnabled = useContext(MotionContext).animationsEnabled
 
@@ -60,23 +61,21 @@ export default function SketchOutline(props) {
 
     }
     useEffect(() => {
-        controls.set({
-                d: generatePath(variance)
-            })
-        const interval = (motionEnabled) ? setInterval(() => {
+        if (!container.current || !pathRef.current) return;
+
+        const update = () => {
+            if(!container.current || !pathRef.current) return
             controls.set({
                 d: generatePath(variance)
             })
-        }, 200) : null;
-        const observer = new ResizeObserver(() => {
-            controls.set({
-                d: generatePath(variance)
-            })
-        });
+        }
+
+        const interval = (motionEnabled) ? setInterval(update, 200) : null;
+        const observer = new ResizeObserver(update);
         observer.observe(container.current);
 
         return () => {
-            clearInterval(interval);
+            if(interval) clearInterval(interval);
             observer.disconnect();
         }
         
@@ -96,6 +95,7 @@ export default function SketchOutline(props) {
                 <motion.path 
                     animate={controls}
                     className={styles.borderPath}
+                    ref={pathRef}
                     fill="none"
                     strokeWidth="1"
                     filter="url(#pencilTexture)"

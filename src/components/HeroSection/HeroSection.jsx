@@ -7,7 +7,8 @@ import useAnimatedNavigation from '@/hooks/useAnimatedNavigation.jsx';
 
 const info = {
     aboutSnippet: `
-        I enjoy building tools and projects that bridge code and creativity.
+        I'm a professional software developer currently working on programming PLCs and HMIs for industrial equipment.\n
+        Generally, I'm interested in projects which are both creative and technical.
     `,
     ctaButton: "See my projects"
 }

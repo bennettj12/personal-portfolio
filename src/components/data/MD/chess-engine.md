@@ -4,7 +4,7 @@
 
 ## Project Overview
 
-One of my C.S. courses near the end of my program was a larger group project in which we needed to collaborate on a project of our choice. Together, despite the fact that none of us were all that into chess, we decided it might be a fun and interesting challenge to build a chess app.
+One of my C.S. courses near the end of my program included a larger project in which we needed to collaborate on a project of our choice. Together, despite the fact that none of us were all that into chess, we decided it might be a fun and interesting challenge to build a chess app.
 
 We had a general goal which would allow for some division of labor, the app would have a React/web-based frontend and the engine itself would be written in Java. To connect these parts, we decided to use Spring to build a REST API.
 
@@ -165,7 +165,7 @@ The same logic used in our `MoveValidator` helps us greatly as we can reuse the 
 
 When approaching the problem of building a chess playing AI, at least at the very basic level, the agent needs to be able to look at a chess board and make a guess to the following question:
 
-1. Given the state of the game, who is winning, and by how much?
+Given the state of the game, who is winning, and by how much?
 
 ### So, who is winning?
 
@@ -224,7 +224,7 @@ Another example is the table for knights:
 	-50,-40,-30,-30,-30,-30,-40,-50 
 },
 ```
-This table is build to discourage knights from landing on the edges of the board, as it tends to be a worse position.
+This table is built to discourage knights from landing on the edges of the board, as it tends to be a worse position.
 For our proejct, I used the premade tables found on this page for my board evaluation function:
 [https://www.chessprogramming.org/Simplified_Evaluation_Function](https://www.chessprogramming.org/Simplified_Evaluation_Function)
 
